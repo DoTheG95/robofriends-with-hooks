@@ -5,11 +5,16 @@ import Scroll from '../components/Scroll';
 import './App.css'
 import ErrorBoundry from "../components/ErrorBoundry";
 
-function App {
+function App() {
 
     const [robots, setRobots] = useState([])
     const [searchfield, setSearchfield] = useState('');
 
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(users => {setRobots(users)})
+    })
     onSearchChange = (event) => {
         setSearchfield(event.target.value)
     } 
@@ -31,7 +36,7 @@ function App {
                     </ErrorBoundry>
                 </Scroll>
             </div>);
-        }
+        };
      
 }
 
