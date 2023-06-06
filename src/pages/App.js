@@ -9,6 +9,7 @@ function App() {
 
     const [robots, setRobots] = useState([])
     const [searchfield, setSearchfield] = useState('');
+    const [count, setCount] = useState(0);
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -28,6 +29,9 @@ function App() {
         <h1>Loading</h1>:
          (<div className="tc">
             <h1 className="f2">RoboFriends</h1>
+            <button onClick={()=>setCount(count+1)}>Click me! - Current Count: {count}</button>
+            
+            <button onClick={()=>setCount(0)}>Reset Count</button>
             <SearchBox searchChange={onSearchChange}/>
             <Scroll>
                 <ErrorBoundry>
